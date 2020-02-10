@@ -3,7 +3,7 @@
   <entry>
     <title>PAT-19年秋乙级真题-擅长C</title>
     <url>/2020/02/10/PAT-19%E5%B9%B4%E5%86%AC%E4%B9%99%E7%BA%A7%E7%9C%9F%E9%A2%98-%E6%93%85%E9%95%BFC/</url>
-    <content><![CDATA[<p>当时在考场上没做出来，太着急了,回来后静下心做了一遍，只要思路清晰还是比较容易拿满分。  </p>
+    <content><![CDATA[<p>那天在机房没做出来，太着急了,回来后静下心做了一遍，思路清晰地去写还是比较容易做出来的。  </p>
 <hr>
 <p>&emsp;&emsp;7-4 擅长C (20分)  </p>
 <p><img src="/2020/02/10/PAT-19%E5%B9%B4%E5%86%AC%E4%B9%99%E7%BA%A7%E7%9C%9F%E9%A2%98-%E6%93%85%E9%95%BFC/1.jpg" alt="0"></p>
@@ -70,12 +70,10 @@
 <li><a href="#272-s表达式求值">272. s表达式求值</a></li>
 </ul>
 <!-- /TOC -->
-
-<hr>
-<p>复习了树的相关知识 手动建树 欲知此事须躬行！<br>很多方法要求递归实现，在写递归时，要注意边界条件，递归的前进段、返回段。<br>脑中能模拟出递归的流程</p>
-<hr>
 <a id="more"></a>
-
+<hr>
+<p>复习了树的相关知识 手动建树 绝知此事要躬行！<br>很多方法要求递归实现，在写递归时，要注意边界条件，递归的前进段、返回段。<br>脑中能模拟出递归的流程</p>
+<hr>
 <h2 id="二叉树结点定义-按给定先序建树以及删除"><a href="#二叉树结点定义-按给定先序建树以及删除" class="headerlink" title="二叉树结点定义  按给定先序建树以及删除"></a>二叉树结点定义  按给定先序建树以及删除</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义结点    BinTree代表指向一个TNode的指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> data;</span><br><span class="line">    TNode* lchild;</span><br><span class="line">    TNode* rchild;</span><br><span class="line">&#125;*BinTree;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  按给定 先序遍历 递归建立二叉树 </span></span><br><span class="line"><span class="function">BinTree <span class="title">Create</span><span class="params">(<span class="built_in">string</span> &amp;a)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(a[<span class="number">0</span>] == <span class="string">'0'</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;       <span class="comment">//'0'表示结点为空</span></span><br><span class="line">    BinTree T = <span class="keyword">new</span> TNode;</span><br><span class="line">    T-&gt;data = a[<span class="number">0</span>];</span><br><span class="line">    a = a.substr(<span class="number">1</span>);</span><br><span class="line">    T-&gt;lchild = Create(a);</span><br><span class="line">    a = a.substr(<span class="number">1</span>);</span><br><span class="line">    T-&gt;rchild = Create(a);</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除树 递归free所有结点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Det</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T) &#123;</span><br><span class="line">        Det(T-&gt;lchild);</span><br><span class="line">        Det(T-&gt;rchild);</span><br><span class="line">        <span class="built_in">free</span>(T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="263-树结构相等的判断"><a href="#263-树结构相等的判断" class="headerlink" title="263. 树结构相等的判断"></a>263. 树结构相等的判断</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Check</span><span class="params">(BinTree T1, BinTree T2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T1 &amp;&amp; T2) &#123;          <span class="comment">//列出不等的条件</span></span><br><span class="line">        <span class="keyword">if</span>(T1-&gt;data != T2-&gt;data) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!Check(T1-&gt;lchild, T2-&gt;lchild)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!Check(T1-&gt;rchild, T2-&gt;rchild)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> T1 == T2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
