@@ -1,273 +1,744 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+
+
 
   
-  <title>BJFUOJ 263-272 Binary Tree | Zzhのblog | Alvin103</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BJFUOJ | Data Structure    二叉树结点定义  按给定先序建树以及删除 263.&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;树结构相等的判断 264.&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;左右孩子的交换 265. &amp; 269.&amp;emsp;前中后双序遍历 （递归） 266.&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;最大宽度 267. &amp; 2">
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="BJFUOJ | Data Structure    二叉树结点定义  按给定先序建树以及删除 263. 树结构相等的判断 264. 左右孩子的交换 265. &amp; 269. 前中后双序遍历 （递归） 266. 最大宽度 267. &amp; 271. 最长路径  高度 268. 叶子结点到根节点的路径 270. 统计度为 0 1 2 结点个数 272. s表达式求值     复习了树的相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BJFUOJ 263-272 Binary Tree">
 <meta property="og:url" content="http://alvin103.github.io/2020/02/10/BJFUOJ%20263-272%20Binary%20Tree/index.html">
 <meta property="og:site_name" content="Zzhのblog | Alvin103">
-<meta property="og:description" content="BJFUOJ | Data Structure    二叉树结点定义  按给定先序建树以及删除 263.&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;树结构相等的判断 264.&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;左右孩子的交换 265. &amp; 269.&amp;emsp;前中后双序遍历 （递归） 266.&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;最大宽度 267. &amp; 2">
+<meta property="og:description" content="BJFUOJ | Data Structure    二叉树结点定义  按给定先序建树以及删除 263. 树结构相等的判断 264. 左右孩子的交换 265. &amp; 269. 前中后双序遍历 （递归） 266. 最大宽度 267. &amp; 271. 最长路径  高度 268. 叶子结点到根节点的路径 270. 统计度为 0 1 2 结点个数 272. s表达式求值     复习了树的相关">
 <meta property="article:published_time" content="2020-02-09T19:14:05.000Z">
-<meta property="article:modified_time" content="2020-02-09T20:17:54.150Z">
+<meta property="article:modified_time" content="2020-02-10T04:03:26.113Z">
 <meta property="article:author" content="郑子豪">
 <meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://alvin103.github.io/2020/02/10/BJFUOJ 263-272 Binary Tree/"/>
+
+
+
+
+
+  <title>BJFUOJ 263-272 Binary Tree | Zzhのblog | Alvin103</title>
   
-    <link rel="alternate" href="/atom.xml" title="Zzhのblog | Alvin103" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?016e37d7b6a1d09e58727fe5439a3149";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Zzhのblog | Alvin103</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Hello world,heal the world.</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://alvin103.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="w-BJFUOJ 263-272 Binary Tree" class="article article-type-w" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/10/BJFUOJ%20263-272%20Binary%20Tree/" class="article-date">
-  <time datetime="2020-02-09T19:14:05.000Z" itemprop="datePublished">2020-02-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
-    <h1 class="article-title" itemprop="name">
-      BJFUOJ 263-272 Binary Tree
-    </h1>
+  
+    
   
 
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zzhのblog | Alvin103</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hello world,heal the world.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://alvin103.github.io/2020/02/10/BJFUOJ%20263-272%20Binary%20Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="郑子豪">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zzhのblog | Alvin103">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BJFUOJ 263-272 Binary Tree</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T03:14:05+08:00">
+                2020-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
       
         <p><a href="http://www.bjfuacm.com/structure?tag=%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&page=1" target="_blank" rel="noopener">BJFUOJ | Data Structure</a></p>
 <!-- TOC -->
 
 <ul>
 <li><a href="#二叉树结点定义--按给定先序建树以及删除">二叉树结点定义  按给定先序建树以及删除</a></li>
-<li><a href="#263emspemspemspemsp树结构相等的判断">263.&emsp;&emsp;&emsp;&emsp;树结构相等的判断</a></li>
-<li><a href="#264emspemspemspemsp左右孩子的交换">264.&emsp;&emsp;&emsp;&emsp;左右孩子的交换</a></li>
-<li><a href="#265--269emsp前中后双序遍历-递归">265. &amp; 269.&emsp;前中后双序遍历 （递归）</a></li>
-<li><a href="#266emspemspemspemsp最大宽度">266.&emsp;&emsp;&emsp;&emsp;最大宽度</a></li>
-<li><a href="#267--271emsp最长路径--高度">267. &amp; 271.&emsp;最长路径  高度</a></li>
-<li><a href="#268emspemspemspemsp叶子结点到根节点的路径">268.&emsp;&emsp;&emsp;&emsp;叶子结点到根节点的路径</a></li>
-<li><a href="#270emspemspemspemsp统计度为-0-1-2-结点个数">270.&emsp;&emsp;&emsp;&emsp;统计度为 0 1 2 结点个数</a></li>
-<li><a href="#272emspemspemspemsp表达式求值">272.&emsp;&emsp;&emsp;&emsp;表达式求值</a></li>
+<li><a href="#263-树结构相等的判断">263. 树结构相等的判断</a></li>
+<li><a href="#264-左右孩子的交换">264. 左右孩子的交换</a></li>
+<li><a href="#265--269-前中后双序遍历-递归">265. &amp; 269. 前中后双序遍历 （递归）</a></li>
+<li><a href="#266-最大宽度">266. 最大宽度</a></li>
+<li><a href="#267--271-最长路径--高度">267. &amp; 271. 最长路径  高度</a></li>
+<li><a href="#268-叶子结点到根节点的路径">268. 叶子结点到根节点的路径</a></li>
+<li><a href="#270-统计度为-0-1-2-结点个数">270. 统计度为 0 1 2 结点个数</a></li>
+<li><a href="#272-s表达式求值">272. s表达式求值</a></li>
 </ul>
 <!-- /TOC -->
 
 <hr>
 <p>复习了树的相关知识 手动建树 欲知此事须躬行！<br>很多方法要求递归实现，在写递归时，要注意边界条件，递归的前进段、返回段。<br>脑中能模拟出递归的流程</p>
 <hr>
+<a id="more"></a>
+
 <h2 id="二叉树结点定义-按给定先序建树以及删除"><a href="#二叉树结点定义-按给定先序建树以及删除" class="headerlink" title="二叉树结点定义  按给定先序建树以及删除"></a>二叉树结点定义  按给定先序建树以及删除</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义结点    BinTree代表指向一个TNode的指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> data;</span><br><span class="line">    TNode* lchild;</span><br><span class="line">    TNode* rchild;</span><br><span class="line">&#125;*BinTree;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  按给定 先序遍历 递归建立二叉树 </span></span><br><span class="line"><span class="function">BinTree <span class="title">Create</span><span class="params">(<span class="built_in">string</span> &amp;a)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(a[<span class="number">0</span>] == <span class="string">'0'</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;       <span class="comment">//'0'表示结点为空</span></span><br><span class="line">    BinTree T = <span class="keyword">new</span> TNode;</span><br><span class="line">    T-&gt;data = a[<span class="number">0</span>];</span><br><span class="line">    a = a.substr(<span class="number">1</span>);</span><br><span class="line">    T-&gt;lchild = Create(a);</span><br><span class="line">    a = a.substr(<span class="number">1</span>);</span><br><span class="line">    T-&gt;rchild = Create(a);</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除树 递归free所有结点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Det</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T) &#123;</span><br><span class="line">        Det(T-&gt;lchild);</span><br><span class="line">        Det(T-&gt;rchild);</span><br><span class="line">        <span class="built_in">free</span>(T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="263-emsp-emsp-emsp-emsp-树结构相等的判断"><a href="#263-emsp-emsp-emsp-emsp-树结构相等的判断" class="headerlink" title="263.&emsp;&emsp;&emsp;&emsp;树结构相等的判断"></a>263.&emsp;&emsp;&emsp;&emsp;树结构相等的判断</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Check</span><span class="params">(BinTree T1, BinTree T2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T1 &amp;&amp; T2) &#123;          <span class="comment">//列出不等的条件</span></span><br><span class="line">        <span class="keyword">if</span>(T1-&gt;data != T2-&gt;data) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!Check(T1-&gt;lchild, T2-&gt;lchild)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!Check(T1-&gt;rchild, T2-&gt;rchild)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> T1 == T2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="263-树结构相等的判断"><a href="#263-树结构相等的判断" class="headerlink" title="263. 树结构相等的判断"></a>263. 树结构相等的判断</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Check</span><span class="params">(BinTree T1, BinTree T2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T1 &amp;&amp; T2) &#123;          <span class="comment">//列出不等的条件</span></span><br><span class="line">        <span class="keyword">if</span>(T1-&gt;data != T2-&gt;data) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!Check(T1-&gt;lchild, T2-&gt;lchild)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!Check(T1-&gt;rchild, T2-&gt;rchild)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> T1 == T2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="264-emsp-emsp-emsp-emsp-左右孩子的交换"><a href="#264-emsp-emsp-emsp-emsp-左右孩子的交换" class="headerlink" title="264.&emsp;&emsp;&emsp;&emsp;左右孩子的交换"></a>264.&emsp;&emsp;&emsp;&emsp;左右孩子的交换</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Swap</span><span class="params">(BinTree T)</span> </span>&#123;      <span class="comment">//递归实现</span></span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    BinTree p = T-&gt;rchild;</span><br><span class="line">    T-&gt;rchild = T-&gt;lchild;</span><br><span class="line">    T-&gt;lchild = p;</span><br><span class="line">    Swap(T-&gt;lchild);</span><br><span class="line">    Swap(T-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="264-左右孩子的交换"><a href="#264-左右孩子的交换" class="headerlink" title="264. 左右孩子的交换"></a>264. 左右孩子的交换</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Swap</span><span class="params">(BinTree T)</span> </span>&#123;      <span class="comment">//递归实现</span></span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    BinTree p = T-&gt;rchild;</span><br><span class="line">    T-&gt;rchild = T-&gt;lchild;</span><br><span class="line">    T-&gt;lchild = p;</span><br><span class="line">    Swap(T-&gt;lchild);</span><br><span class="line">    Swap(T-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="265-amp-269-emsp-前中后双序遍历-（递归）"><a href="#265-amp-269-emsp-前中后双序遍历-（递归）" class="headerlink" title="265. &amp; 269.&emsp;前中后双序遍历 （递归）"></a>265. &amp; 269.&emsp;前中后双序遍历 （递归）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实质是控制第几次访问时输出</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreT</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    PreT(T-&gt;lchild);</span><br><span class="line">    PreT(T-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InT</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    InT(T-&gt;lchild);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    InT(T-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PosT</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    PosT(T-&gt;lchild);</span><br><span class="line">    PosT(T-&gt;rchild);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreTTwice</span><span class="params">(BinTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    PreTTwice(T-&gt;lchild);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    PreTTwice(T-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="265-amp-269-前中后双序遍历-（递归）"><a href="#265-amp-269-前中后双序遍历-（递归）" class="headerlink" title="265. &amp; 269. 前中后双序遍历 （递归）"></a>265. &amp; 269. 前中后双序遍历 （递归）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实质是控制第几次访问时输出</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreT</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    PreT(T-&gt;lchild);</span><br><span class="line">    PreT(T-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InT</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    InT(T-&gt;lchild);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    InT(T-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PosT</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    PosT(T-&gt;lchild);</span><br><span class="line">    PosT(T-&gt;rchild);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreTTwice</span><span class="params">(BinTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    PreTTwice(T-&gt;lchild);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">    PreTTwice(T-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="266-emsp-emsp-emsp-emsp-最大宽度"><a href="#266-emsp-emsp-emsp-emsp-最大宽度" class="headerlink" title="266.&emsp;&emsp;&emsp;&emsp;最大宽度"></a>266.&emsp;&emsp;&emsp;&emsp;最大宽度</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetLevelWidth</span><span class="params">(BinTree T, <span class="keyword">int</span> level)</span> </span>&#123;   <span class="comment">//计算指定层的宽度 递归 </span></span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(level == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> GetLevelWidth(T-&gt;lchild, level - <span class="number">1</span>) + GetLevelWidth(T-&gt;rchild, level - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Width</span><span class="params">(BinTree T)</span> </span>&#123;      <span class="comment">//取最大宽度</span></span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = INT_MIN;</span><br><span class="line">    <span class="keyword">int</span> H = Heigh(T);</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">width</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= H; i++) &#123;</span><br><span class="line">        <span class="built_in">width</span> = GetLevelWidth(T, i);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">width</span> &gt; <span class="built_in">max</span>) <span class="built_in">max</span> = <span class="built_in">width</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="266-最大宽度"><a href="#266-最大宽度" class="headerlink" title="266. 最大宽度"></a>266. 最大宽度</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetLevelWidth</span><span class="params">(BinTree T, <span class="keyword">int</span> level)</span> </span>&#123;   <span class="comment">//计算指定层的宽度 递归 </span></span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(level == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> GetLevelWidth(T-&gt;lchild, level - <span class="number">1</span>) + GetLevelWidth(T-&gt;rchild, level - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Width</span><span class="params">(BinTree T)</span> </span>&#123;      <span class="comment">//取最大宽度</span></span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = INT_MIN;</span><br><span class="line">    <span class="keyword">int</span> H = Heigh(T);</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">width</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= H; i++) &#123;</span><br><span class="line">        <span class="built_in">width</span> = GetLevelWidth(T, i);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">width</span> &gt; <span class="built_in">max</span>) <span class="built_in">max</span> = <span class="built_in">width</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="267-amp-271-emsp-最长路径-高度"><a href="#267-amp-271-emsp-最长路径-高度" class="headerlink" title="267. &amp; 271.&emsp;最长路径  高度"></a>267. &amp; 271.&emsp;最长路径  高度</h2><p>求最长路径要用到树高</p>
+<h2 id="267-amp-271-最长路径-高度"><a href="#267-amp-271-最长路径-高度" class="headerlink" title="267. &amp; 271. 最长路径  高度"></a>267. &amp; 271. 最长路径  高度</h2><p>求最长路径要用到树高</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PathMax</span><span class="params">(BinTree T, <span class="keyword">char</span> path[], <span class="keyword">int</span> len, <span class="keyword">bool</span> &amp;first, <span class="keyword">int</span> <span class="built_in">height</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(first &amp;&amp; len + <span class="number">1</span> == <span class="built_in">height</span>) &#123;    <span class="comment">//最长路径长度等于二叉树高度 此时顺序输出path内容即为路径</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) <span class="built_in">cout</span> &lt;&lt; path[i];</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; T-&gt;data &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            first = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;    <span class="comment">//将走过结点放入path数组 递归寻找最长路径</span></span><br><span class="line">        path[len++] = T-&gt;data;</span><br><span class="line">        PathMax(T-&gt;lchild, path, len, first, <span class="built_in">height</span>);</span><br><span class="line">        PathMax(T-&gt;rchild, path, len, first, <span class="built_in">height</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="268-emsp-emsp-emsp-emsp-叶子结点到根节点的路径"><a href="#268-emsp-emsp-emsp-emsp-叶子结点到根节点的路径" class="headerlink" title="268.&emsp;&emsp;&emsp;&emsp;叶子结点到根节点的路径"></a>268.&emsp;&emsp;&emsp;&emsp;叶子结点到根节点的路径</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Path0</span><span class="params">(BinTree T, <span class="keyword">char</span> path[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) &#123;   <span class="comment">//遇到叶子结点 输出路径</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) <span class="built_in">cout</span> &lt;&lt; path[i];</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;    <span class="comment">//path记录路径</span></span><br><span class="line">        path[len++] = T-&gt;data;</span><br><span class="line">        Path0(T-&gt;lchild, path, len);</span><br><span class="line">        Path0(T-&gt;rchild, path, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="268-叶子结点到根节点的路径"><a href="#268-叶子结点到根节点的路径" class="headerlink" title="268. 叶子结点到根节点的路径"></a>268. 叶子结点到根节点的路径</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Path0</span><span class="params">(BinTree T, <span class="keyword">char</span> path[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) &#123;   <span class="comment">//遇到叶子结点 输出路径</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; T-&gt;data;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) <span class="built_in">cout</span> &lt;&lt; path[i];</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;    <span class="comment">//path记录路径</span></span><br><span class="line">        path[len++] = T-&gt;data;</span><br><span class="line">        Path0(T-&gt;lchild, path, len);</span><br><span class="line">        Path0(T-&gt;rchild, path, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="270-emsp-emsp-emsp-emsp-统计度为-0-1-2-结点个数"><a href="#270-emsp-emsp-emsp-emsp-统计度为-0-1-2-结点个数" class="headerlink" title="270.&emsp;&emsp;&emsp;&emsp;统计度为 0 1 2 结点个数"></a>270.&emsp;&emsp;&emsp;&emsp;统计度为 0 1 2 结点个数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//控制四种情况的返回值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">D0</span><span class="params">(BinTree T)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D0(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D0(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> D0(T-&gt;lchild) + D0(T-&gt;rchild);</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">D1</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">1</span> + D1(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;rchild == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">1</span> + D1(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> D1(T-&gt;lchild) + D1(T-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">D2</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D2(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D2(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">1</span> + D2(T-&gt;lchild) + D2(T-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="270-统计度为-0-1-2-结点个数"><a href="#270-统计度为-0-1-2-结点个数" class="headerlink" title="270. 统计度为 0 1 2 结点个数"></a>270. 统计度为 0 1 2 结点个数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//控制四种情况的返回值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">D0</span><span class="params">(BinTree T)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D0(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D0(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> D0(T-&gt;lchild) + D0(T-&gt;rchild);</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">D1</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">1</span> + D1(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;rchild == <span class="literal">NULL</span>)<span class="keyword">return</span> <span class="number">1</span> + D1(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> D1(T-&gt;lchild) + D1(T-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">D2</span><span class="params">(BinTree T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D2(T-&gt;rchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> D2(T-&gt;lchild);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">1</span> + D2(T-&gt;lchild) + D2(T-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="272-emsp-emsp-emsp-emsp-表达式求值"><a href="#272-emsp-emsp-emsp-emsp-表达式求值" class="headerlink" title="272.&emsp;&emsp;&emsp;&emsp;表达式求值"></a>272.&emsp;&emsp;&emsp;&emsp;表达式求值</h2><p>我们通常计算的表达式是中缀 比如 2<em>(2+5) = ？ ，计算机喜欢后缀表达式 225+</em> =  ?  ^ _ ^，首先将输入的中缀表达式转成二叉树表示，然后利用后序遍历递归算法计算表达式值</p>
+<h2 id="272-s表达式求值"><a href="#272-s表达式求值" class="headerlink" title="272. s表达式求值"></a>272. s表达式求值</h2><p>我们通常计算的表达式是中缀 比如 2<em>(2+5) = ？ ，计算机喜欢后缀表达式 225+</em> =  ?  ^ _ ^，首先将输入的中缀表达式转成二叉树表示，然后利用后序遍历递归算法计算表达式值</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://alvin103.github.io/2020/02/10/BJFUOJ%20263-272%20Binary%20Tree/" data-id="ck6fs5opn0000wsqafxs12ljs" class="article-share-link">Share</a>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/09/Hello%20World/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/10/MarkDown/" rel="prev" title="MarkDown">
+                MarkDown <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
   
-    <a href="/2020/02/10/MarkDown/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
         
-          MarkDown
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">郑子豪</p>
+              <p class="site-description motion-element" itemprop="description">欲知此事须躬行</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树结点定义-按给定先序建树以及删除"><span class="nav-number">1.</span> <span class="nav-text">二叉树结点定义  按给定先序建树以及删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#263-树结构相等的判断"><span class="nav-number">2.</span> <span class="nav-text">263. 树结构相等的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#264-左右孩子的交换"><span class="nav-number">3.</span> <span class="nav-text">264. 左右孩子的交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#265-amp-269-前中后双序遍历-（递归）"><span class="nav-number">4.</span> <span class="nav-text">265. &amp; 269. 前中后双序遍历 （递归）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#266-最大宽度"><span class="nav-number">5.</span> <span class="nav-text">266. 最大宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#267-amp-271-最长路径-高度"><span class="nav-number">6.</span> <span class="nav-text">267. &amp; 271. 最长路径  高度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#268-叶子结点到根节点的路径"><span class="nav-number">7.</span> <span class="nav-text">268. 叶子结点到根节点的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#270-统计度为-0-1-2-结点个数"><span class="nav-number">8.</span> <span class="nav-text">270. 统计度为 0 1 2 结点个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#272-s表达式求值"><span class="nav-number">9.</span> <span class="nav-text">272. s表达式求值</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
         
       </div>
-    </a>
-  
-  
-    <a href="/2020/02/09/Hello%20World/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郑子豪</span>
 
   
-</article>
+</div>
 
-</section>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li></ul>
-    </div>
-  </div>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/02/10/pictureErr/">解决网页图片加载失败</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/10/MarkDown/">MarkDown</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/10/BJFUOJ%20263-272%20Binary%20Tree/">BJFUOJ 263-272 Binary Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/09/Hello%20World/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-</aside>
+
+
+
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 郑子豪<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-<script>
-    var now = new Date(); 
-    function createtime() { 
-        var grt= new Date("2/9/2020 00:00:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
-        now.setTime(now.getTime()+250); 
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate").innerHTML = "拆弹倒计时 "+dnum+" 天 "; 
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-    } 
-setInterval("createtime()",250);
+    </footer>
 
-</script> 
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
+    
 
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
