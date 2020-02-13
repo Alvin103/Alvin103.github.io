@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Zzhの博客 | Alvin103</title>
+  <title>Zzh的博客 | Alvin103</title>
   
-  <subtitle>Hello world,heal the world.</subtitle>
+  <subtitle>Hello world, heal the world.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://alvin103.github.io/"/>
