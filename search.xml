@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>腾讯云短信接口实现手机验证码</title>
+    <url>/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/</url>
+    <content><![CDATA[<p>终于用腾讯云短信接口实现了短信注册码！ 一路摸索，好在柳暗花明，遇到的问题最终都解决了。  </p>
+<p><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/1.JPG" alt="1"></p>
+<a id="more"></a>
+
+<hr>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="腾讯云短信"><a href="#腾讯云短信" class="headerlink" title="腾讯云短信"></a>腾讯云短信</h3><p>注册腾讯云账号使用短信服务，相信很多跟我一样都卡在了申请短信签名这里<br><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/2.JPG" alt="1"><br>没有符合的申请要求，没有上线的小程序和公众号^_^,几乎放弃，想再找找其他免费的短信服务。<br>灵机一动，想到了之前做个人公众号的舍友 BigSakana。</p>
+<p>于是愉快的申请好了签名和正文，之后就可以行动了！<br><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/4.JPG" alt="1"></p>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>Redis是一个开源的用C编写的高性能key-value数据库!<br><a href="https://github.com/microsoftarchive/redis/releases" target="_blank" rel="noopener">github下载（需梯子）</a>&emsp;&emsp;&emsp;&emsp;<a href="https://pan.baidu.com/s/1i56thcD?fid=736886225509949" target="_blank" rel="noopener">百度云下载</a><br>下好后添加环境变量 控制台输入启动Redis  </p>
+<pre><code>redis-cli.exe   //启动
+set test 111    //添加key名为test 键值为111的数据
+keys *          //查看所有
+get test        //找key对应value
+del test        //删除</code></pre><p><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/5.JPG" alt="1"><br>还可以设置超时时间等</p>
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">      <span class="comment">&lt;!-- 腾讯云短信依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.qcloudsms<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>qcloudsms<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>	</span><br><span class="line"><span class="comment">&lt;!-- Redis 依赖 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="发送短信"><a href="#发送短信" class="headerlink" title="发送短信"></a>发送短信</h2><p><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/6.JPG" alt="1"><br>流程:<br>当用户输入手机号点击获取验证码，小程序向后台发送请求，后台向提供短信服务的运营商发出请求，然后短信运营商给手机用户发送短信。后台会把手机号和验证码存到Redis中，并设置超时时间。</p>
+<p>后端用的java</p>
+<p><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/7.JPG" alt="1"></p>
+<h3 id="用户类代码"><a href="#用户类代码" class="headerlink" title="用户类代码"></a>用户类代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> cn.alvin.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.alvin.service.UserService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span>		<span class="comment">//标记Controller 用于处理用户请求和响应 Spring管理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">	<span class="comment">//接收用户请求的参数并且将相应的数据响应给用户</span></span><br><span class="line">	<span class="meta">@Autowired</span>	<span class="comment">//按类型注入</span></span><br><span class="line">	<span class="keyword">private</span> UserService userService;<span class="comment">//引用接口</span></span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/user/genCode"</span>)	<span class="comment">//与小程序的请求一致</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">genVerifyCode</span><span class="params">(String nationCode, String phoneNum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = userService.sendMsg(nationCode, phoneNum);<span class="comment">//sendMsg方法传递用户输入的国家编码和电话号码</span></span><br><span class="line">		<span class="keyword">return</span> flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="service类代码"><a href="#service类代码" class="headerlink" title="service类代码"></a>service类代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> cn.alvin.service;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit; </span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.core.StringRedisTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.qcloudsms.SmsSingleSender; </span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>	<span class="comment">//Spring注解 标记这个类被Spring容器管理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">sendMsg</span><span class="params">(String nationCode, String phoneNum)</span> </span>&#123;    <span class="comment">//方法的实现</span></span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">		<span class="comment">// 调用腾讯云的短信API</span></span><br><span class="line">		<span class="keyword">int</span> appid = Integer.parseInt(stringRedisTemplate.opsForValue().get(<span class="string">"appid"</span>));</span><br><span class="line">		String appkey = stringRedisTemplate.opsForValue().get(<span class="string">"appkey"</span>);</span><br><span class="line">		<span class="comment">//生成一个随机数字（4位）</span></span><br><span class="line">		String code = (<span class="keyword">int</span>)(Math.random() * <span class="number">9</span> + <span class="number">1</span>) * <span class="number">1000</span> - <span class="number">1</span> + <span class="string">""</span>;</span><br><span class="line">		    </span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">//String[] params = &#123;"5678"&#125;;</span></span><br><span class="line">				<span class="comment">//String code = "5678";</span></span><br><span class="line">				SmsSingleSender ssender = <span class="keyword">new</span> SmsSingleSender(appid, appkey);</span><br><span class="line">				<span class="comment">//向对应手机号的用户发送短信</span></span><br><span class="line">		        ssender.send(<span class="number">0</span>, nationCode, phoneNum, <span class="string">"【BigSakana】您的注册验证码为"</span>+code, <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">				<span class="comment">//将发送的手机号作为key，验证码作为value保存到Redis中</span></span><br><span class="line">				stringRedisTemplate.opsForValue().set(phoneNum, code, <span class="number">300</span>, TimeUnit.SECONDS);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;<span class="comment">//异常</span></span><br><span class="line">				flag = <span class="keyword">false</span>;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">return</span> flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置redis"><a href="#配置redis" class="headerlink" title="配置redis"></a>配置redis</h3><p>配置文件中填写Redis的链接信息</p>
+<pre><code>#redis
+spring.redis.host=localhost
+spring.redis.port=6379
+spring.redis.pool.max-active=20
+spring.redis.pool.max-idle=10
+spring.redis.pool.min-idle=5
+spring.redis.pool.max-wait=-1</code></pre><p>已在Redis里添加了appid和appkey (腾讯云短信服务的应用)<br><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/8.JPG" alt="1">  </p>
+<p>之后启动，测试，成功，取得阶段性胜利^_^！<br><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/12.JPG" alt="1">  </p>
+<hr>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/9.JPG" alt="1"><br>可以看到，开始测试了很多回没有成功，调试过程中小程序确实显示向后端发出了请求，后端也没有异常，很是为啥就是发不出短信呢，查看腾讯云的业务统计知道了是签名的原因。既然审批通过了肯定是格式的问题，不过知道了也不清楚怎么办，于是看开发指南开始试！  </p>
+<p> （后来知道其实发不出的原因就是没把签名写到发送内容里）</p>
+<p>刚开始我用的是 ssender.send 方法，五个参数类型都是String 。 </p>
+<pre><code>ssender.send(0, nationCode, phoneNum, &quot;您的注册验证码为&quot;+code, &quot;&quot;, &quot;&quot;);</code></pre><p><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/10.JPG" alt="1"> </p>
+<p>后来换成文档实例的 ssender.sendWithParam 方法。</p>
+<pre><code>ssender.sendWithParam(nationCode, phoneNum,templateId, params, smsSign, &quot;&quot;, &quot;&quot;);
+//templateId 正文模板id
+//params     参数
+//smsSign    签名</code></pre><p><img src="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/11.JPG" alt="1"><br>注意这个方法的第三个参数类型是ArrayList&lt; String &gt; ，之前声明的是String类型，需要修改下。</p>
+<p>sendWithParam()方法把签名作为一个参数，发送成功了。于是换回send()，这次加上了签名在内容里，也成功了！</p>
+<pre><code>ssender.send(0, nationCode, phoneNum, &quot;【BigSakana】您的注册验证码为&quot;+code, &quot;&quot;, &quot;&quot;);</code></pre><p>参考了<a href="https://cloud.tencent.com/document/product/382/13613" target="_blank" rel="noopener">官方的开发指南</a></p>
+]]></content>
+      <categories>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>共享单车小程序开发总结</title>
     <url>/2020/02/13/%E5%85%B1%E4%BA%AB%E5%8D%95%E8%BD%A6%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[]]></content>
@@ -36,9 +93,9 @@
         <category>PAT</category>
       </categories>
       <tags>
+        <tag>DS</tag>
         <tag>c++</tag>
         <tag>链表</tag>
-        <tag>DS</tag>
       </tags>
   </entry>
   <entry>
