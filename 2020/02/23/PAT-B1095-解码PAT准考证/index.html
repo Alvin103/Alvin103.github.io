@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="c++,字符串," />
 
 
 
@@ -81,21 +81,20 @@
 
 
 
-<meta name="description" content="今天看网课学到一句名言，感慨一下……   The mind is not a vessel to be filled, but a fire to be kindled.&amp;emsp;&amp;emsp;—— Plutarch   说得真好，确实是这样，所有坚持的事情，那些个日日夜夜，并不是在乎“容器”里的得失，而是因为有了心中的那团火焰。">
+<meta name="description" content="这题一开始没有想全就写了，没考虑所有的要求，导致后面重写。只要想好怎么存数据就好操作了。把cin，cout改成scanf，printf，否则超时。所有NA的情况一起判断。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="共享单车小程序开发总结">
-<meta property="og:url" content="http://alvin103.github.io/2020/02/16/%E5%85%B1%E4%BA%AB%E5%8D%95%E8%BD%A6%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="PAT-B1095-解码PAT准考证">
+<meta property="og:url" content="http://alvin103.github.io/2020/02/23/PAT-B1095-%E8%A7%A3%E7%A0%81PAT%E5%87%86%E8%80%83%E8%AF%81/index.html">
 <meta property="og:site_name" content="Zzh的博客 | Alvin103">
-<meta property="og:description" content="今天看网课学到一句名言，感慨一下……   The mind is not a vessel to be filled, but a fire to be kindled.&amp;emsp;&amp;emsp;—— Plutarch   说得真好，确实是这样，所有坚持的事情，那些个日日夜夜，并不是在乎“容器”里的得失，而是因为有了心中的那团火焰。">
-<meta property="og:image" content="https://i1.fuimg.com/709842/b41e8bf4a6ef20ec.gif">
-<meta property="og:image" content="https://i1.fuimg.com/709842/e1038fe98bd2175d.gif">
-<meta property="og:image" content="https://i1.fuimg.com/709842/fa4774da01d101ef.gif">
-<meta property="og:image" content="https://i1.fuimg.com/709842/99bcec7f6a8aa7d1.gif">
-<meta property="article:published_time" content="2020-02-16T10:45:54.000Z">
-<meta property="article:modified_time" content="2020-02-21T19:47:49.329Z">
+<meta property="og:description" content="这题一开始没有想全就写了，没考虑所有的要求，导致后面重写。只要想好怎么存数据就好操作了。把cin，cout改成scanf，printf，否则超时。所有NA的情况一起判断。">
+<meta property="og:image" content="http://alvin103.github.io/2020/02/23/PAT-B1095-%E8%A7%A3%E7%A0%81PAT%E5%87%86%E8%80%83%E8%AF%81/1.JPG">
+<meta property="article:published_time" content="2020-02-22T17:10:55.000Z">
+<meta property="article:modified_time" content="2020-02-24T21:04:06.344Z">
 <meta property="article:author" content="郑子豪">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i1.fuimg.com/709842/b41e8bf4a6ef20ec.gif">
+<meta name="twitter:image" content="http://alvin103.github.io/2020/02/23/PAT-B1095-%E8%A7%A3%E7%A0%81PAT%E5%87%86%E8%80%83%E8%AF%81/1.JPG">
 
 
 
@@ -125,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://alvin103.github.io/2020/02/16/共享单车小程序开发总结/"/>
+  <link rel="canonical" href="http://alvin103.github.io/2020/02/23/PAT-B1095-解码PAT准考证/"/>
 
 
 
 
 
-  <title>共享单车小程序开发总结 | Zzh的博客 | Alvin103</title>
+  <title>PAT-B1095-解码PAT准考证 | Zzh的博客 | Alvin103</title>
   
 
 
@@ -312,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://alvin103.github.io/2020/02/16/%E5%85%B1%E4%BA%AB%E5%8D%95%E8%BD%A6%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://alvin103.github.io/2020/02/23/PAT-B1095-%E8%A7%A3%E7%A0%81PAT%E5%87%86%E8%80%83%E8%AF%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="郑子豪">
@@ -329,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">共享单车小程序开发总结</h1>
+          <h1 class="post-title" itemprop="name headline">PAT-B1095-解码PAT准考证</h1>
         
 
         <div class="post-meta">
@@ -341,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T18:45:54+08:00">
-                2020-02-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-23T01:10:55+08:00">
+                2020-02-23
               </time>
             
 
@@ -364,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">小程序</span>
+                  <a href="/categories/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
                   </a>
                 </span>
 
@@ -401,21 +400,20 @@
       
 
       
-        <hr>
-<p>今天看网课学到一句名言，感慨一下……  </p>
-<p>The mind is not a vessel to be filled, but a fire to be kindled.&emsp;&emsp;—— Plutarch  </p>
-<p>说得真好，确实是这样，所有坚持的事情，那些个日日夜夜，并不是在乎“容器”里的得失，而是因为有了心中的那团火焰。</p>
+        <p>这题一开始没有想全就写了，没考虑所有的要求，导致后面重写。只要想好怎么存数据就好操作了。<br>把cin，cout改成scanf，printf，否则超时。<br>所有NA的情况一起判断。</p>
 <a id="more"></a>
 
 <hr>
-<h2 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h2><h3 id="初始界面，定位"><a href="#初始界面，定位" class="headerlink" title="初始界面，定位"></a>初始界面，定位</h3><p><img src="https://i1.fuimg.com/709842/b41e8bf4a6ef20ec.gif" alt="Markdown"></p>
-<h3 id="点击扫码开锁，进入注册"><a href="#点击扫码开锁，进入注册" class="headerlink" title="点击扫码开锁，进入注册"></a>点击扫码开锁，进入注册</h3><p><img src="https://i1.fuimg.com/709842/e1038fe98bd2175d.gif" alt="Markdown"></p>
-<h3 id="押金和实名认证"><a href="#押金和实名认证" class="headerlink" title="押金和实名认证"></a>押金和实名认证</h3><p><img src="https://i1.fuimg.com/709842/fa4774da01d101ef.gif" alt="Markdown"></p>
-<h3 id="查找附近单车和添加单车"><a href="#查找附近单车和添加单车" class="headerlink" title="查找附近单车和添加单车"></a>查找附近单车和添加单车</h3><p><img src="https://i1.fuimg.com/709842/99bcec7f6a8aa7d1.gif" alt="Markdown"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第一次做微信小程序，牛客网的项目，跟着做下来学习了一些知识，锻炼了动手能力，要完全消化理解还需要继续深入学习，过程中遇到问题卡住，孤独的查文档和博客的景象历历在目 T_T </p>
-<p>总结一下，项目主要进行了<br>1.小程序相关组件实现前台界面 weui<br>2.SpringBoot框架实现后台程序，初识SpringBoot，真的是开箱即用了-_-<br>3.短信接口用了腾讯云的<br>4.redis用来存储检验验证码<br>5.MongoDB数据库保存users和bikes的信息<br>6.支付和实名的两个request都是模拟的，只是保存了信息没有调用支付认证的API<br>7.MongoDB的Geo索引实现只查找一定范围内的单车  </p>
-<p>一些图标从<a href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2" target="_blank" rel="noopener">iconfont</a>找的<br>源码已上传<a href="https://github.com/Alvin103/bike" target="_blank" rel="noopener">github</a></p>
-<hr>
+<p>PAT 准考证号由 4 部分组成：<br>第 1 位是级别，即 T 代表顶级；A 代表甲级；B 代表乙级；<br>第 2<del>4 位是考场编号，范围从 101 到 999；<br>第 5</del>10 位是考试日期，格式为年、月、日顺次各占 2 位；<br>最后 11~13 位是考生编号，范围从 000 到 999。<br>现给定一系列考生的准考证号和他们的成绩，请你按照要求输出各种统计信息。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>输入首先在一行中给出两个正整数 N（≤10<br>​4<br>​​ ）和 M（≤100），分别为考生人数和统计要求的个数。</p>
+<p>接下来 N 行，每行给出一个考生的准考证号和其分数（在区间 [0,100] 内的整数），其间以空格分隔。</p>
+<p>考生信息之后，再给出 M 行，每行给出一个统计要求，格式为：类型 指令，其中</p>
+<p>类型 为 1 表示要求按分数非升序输出某个指定级别的考生的成绩，对应的 指令 则给出代表指定级别的字母；<br>类型 为 2 表示要求将某指定考场的考生人数和总分统计输出，对应的 指令 则给出指定考场的编号；<br>类型 为 3 表示要求将某指定日期的考生人数分考场统计输出，对应的 指令 则给出指定日期，格式与准考证上日期相同。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>对每项统计要求，首先在一行中输出 Case #: 要求，其中 # 是该项要求的编号，从 1 开始；要求 即复制输入给出的要求。随后输出相应的统计结果：</p>
+<p>类型 为 1 的指令，输出格式与输入的考生信息格式相同，即 准考证号 成绩。对于分数并列的考生，按其准考证号的字典序递增输出（题目保证无重复准考证号）；<br>类型 为 2 的指令，按 人数 总分 的格式输出；<br>类型 为 3 的指令，输出按人数非递增顺序，格式为 考场编号 总人数。若人数并列则按考场编号递增顺序输出。<br>如果查询结果为空，则输出 NA。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    准考证由4部分组成</span></span><br><span class="line"><span class="comment">    级别  考场     日期   编号</span></span><br><span class="line"><span class="comment">    TAB  101-999 200117</span></span><br><span class="line"><span class="comment">    case 1  指定级别 非升序输出成绩  </span></span><br><span class="line"><span class="comment">    case 2  指定考场 人数 总分</span></span><br><span class="line"><span class="comment">    case 3  指定日期 非递增输出考场人数</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    1.首先收录所有准考证和成绩 </span></span><br><span class="line"><span class="comment">        struct node 定义结构包括一个字符串 和一个整数</span></span><br><span class="line"><span class="comment">        vector&lt;node&gt; 数组存放所有学生信息</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    2.重写cmp比较大小</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="built_in">string</span> t;</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//要求成绩按从大到小 相等时按准考号字典序从小到大</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> node &amp;a,<span class="keyword">const</span> node &amp;b)</span></span>&#123;<span class="comment">//引用传参</span></span><br><span class="line">    <span class="keyword">return</span> a.value!=b.value ? a.value&gt;b.value:a.t&lt;b.t;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,k,num; <span class="comment">//所有的输入</span></span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;node&gt; <span class="title">v</span><span class="params">(n)</span></span>;<span class="comment">//录入信息</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">cin</span>&gt;&gt;v[i].t&gt;&gt;v[i].value;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;<span class="comment">//要求</span></span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;num&gt;&gt;s;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: %d %s\n"</span>,i,num,s.c_str());<span class="comment">//Case 1: 1 T</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;node&gt; ans;<span class="comment">//记录按要求筛选的node</span></span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>,sum=<span class="number">0</span>;<span class="comment">//case2 记录人数总分</span></span><br><span class="line">        <span class="keyword">switch</span> (num)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:&#123;<span class="comment">//指定级别</span></span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++) <span class="keyword">if</span>(v[j].t[<span class="number">0</span>]==s[<span class="number">0</span>]) ans.push_back(v[j]);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:&#123;<span class="comment">//指定考场 输出人数总分 不需用ans</span></span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                            <span class="keyword">if</span>(v[j].t.substr(<span class="number">1</span>,<span class="number">3</span>)==s)&#123;</span><br><span class="line">                                cnt++;sum+=v[j].value;</span><br><span class="line">                            &#125; </span><br><span class="line">                        &#125;<span class="comment">//有的话直接输出 没有最后统一NA</span></span><br><span class="line">                        <span class="keyword">if</span>(cnt!=<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,cnt,sum);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:&#123;</span><br><span class="line">                        <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">                            <span class="keyword">if</span>(v[j].t.substr(<span class="number">4</span>,<span class="number">6</span>)==s) m[v[j].t.substr(<span class="number">1</span>,<span class="number">3</span>)]++;</span><br><span class="line">                        <span class="comment">//将m中的 node付给ans</span></span><br><span class="line">                        <span class="keyword">for</span>(<span class="keyword">auto</span> it:m) ans.push_back(&#123;it.first,it.second&#125;);    </span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>(),cmp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> j = <span class="number">0</span>; j &lt; ans.<span class="built_in">size</span>(); j++) <span class="built_in">printf</span>(<span class="string">"%s %d\n"</span>, ans[j].t.c_str(), ans[j].value);</span><br><span class="line">        <span class="keyword">if</span> (((num == <span class="number">1</span> || num == <span class="number">3</span>) &amp;&amp; ans.<span class="built_in">size</span>() == <span class="number">0</span>) || (num == <span class="number">2</span> &amp;&amp; cnt == <span class="number">0</span>)) <span class="built_in">printf</span>(<span class="string">"NA\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/02/23/PAT-B1095-%E8%A7%A3%E7%A0%81PAT%E5%87%86%E8%80%83%E8%AF%81/1.JPG" alt="1"></p>
 
       
     </div>
@@ -431,6 +429,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+          
+        </div>
+      
 
       
       
@@ -440,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/15/%E8%85%BE%E8%AE%AF%E4%BA%91%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="next" title="腾讯云短信接口实现手机验证码">
-                <i class="fa fa-chevron-left"></i> 腾讯云短信接口实现手机验证码
+              <a href="/2020/02/21/%E5%BC%80%E5%BF%83%EF%BC%81/" rel="next" title="开心！">
+                <i class="fa fa-chevron-left"></i> 开心！
               </a>
             
           </div>
@@ -450,8 +456,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/19/PAT-B1058-B1073-%E5%A4%9A%E9%80%89%E9%A2%98/" rel="prev" title="PAT-B1058-B1073-多选题">
-                PAT-B1058-B1073-多选题 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/24/%E4%BB%8E%E4%B8%80%E6%9D%A1%E7%94%B5%E7%BA%BF%E5%88%B0TCP%60IP/" rel="prev" title="从一条电线到TCP`IP">
+                从一条电线到TCP`IP <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现效果"><span class="nav-number">1.</span> <span class="nav-text">实现效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始界面，定位"><span class="nav-number">1.1.</span> <span class="nav-text">初始界面，定位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点击扫码开锁，进入注册"><span class="nav-number">1.2.</span> <span class="nav-text">点击扫码开锁，进入注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#押金和实名认证"><span class="nav-number">1.3.</span> <span class="nav-text">押金和实名认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找附近单车和添加单车"><span class="nav-number">1.4.</span> <span class="nav-text">查找附近单车和添加单车</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式"><span class="nav-number">1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式"><span class="nav-number">2.</span> <span class="nav-text">输出格式</span></a></li></ol></div>
             
 
           </div>
