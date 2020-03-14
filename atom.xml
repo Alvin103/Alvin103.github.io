@@ -308,9 +308,9 @@
     
       <category term="ds" scheme="http://yoursite.com/tags/ds/"/>
     
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
-    
       <category term="链表" scheme="http://yoursite.com/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
     
   </entry>
   
